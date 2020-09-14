@@ -1,5 +1,7 @@
 <?php 
-
+  if($_POST['name']==='') {
+		print("名前が入力されてません");
+	} 
 ?>
 
 <!DOCTYPE html>
