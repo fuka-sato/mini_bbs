@@ -1,4 +1,6 @@
 <?php 
+	if(!empty($_POST)) {
+
   if($_POST['name']==='') {
 		$error['name'] = 'blank';
 	} 
@@ -6,9 +8,18 @@
 		$error['email'] = 'blank';
 	} 
 
+	if(strlen($_POST['password']) < 4) {
+		$error['password'] = 'length';
+	} 
+
 	if($_POST['password']==='') {
 		$error['password'] = 'blank';
 	} 
+	if(empty($error)) {
+	header('Location: check.php');
+	exit();
+	}
+}
 ?>
 
 <!DOCTYPE html>
@@ -47,6 +58,9 @@
 		<dt>パスワード<span class="required">必須</span></dt>
 		<dd>
         <input type="password" name="password" size="10" maxlength="20" value="<?php print(htmlspecialchars($_POST['password'],ENT_QUOTES));?>" />
+				<?php if($error['password']==='length'):?>
+				<p class="error">パスワードは4文字以上で入力してください</p>
+				<?php endif;?>
 				<?php if($error['password']==='blank'):?>
 				<p class="error">パスワードを入力してください</p>
 				<?php endif;?>
