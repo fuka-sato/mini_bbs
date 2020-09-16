@@ -1,9 +1,8 @@
 <?php 
 	session_start();
 
-	if(!empty($_POST)) {
-
-  if($_POST['name']==='') {
+if(!empty($_POST)) {
+	if($_POST['name']==='') {
 		$error['name'] = 'blank';
 	} 
 	if($_POST['email']==='') {

@@ -1,7 +1,7 @@
 <?php 
 	session_start();
 
-	if (!isset($_SESSION['join'])); {
+	if(!isset($_SESSION['join'])) {
 		header('Location: index.php');
 		exit();
 	}
@@ -30,10 +30,12 @@
 	<dl>
 		<dt>ニックネーム</dt>
 		<dd>
-        </dd>
+		<?php print(htmlspecialchars($_SESSION['join']['name'],ENT_QUOTES)); ?>
+    </dd>
 		<dt>メールアドレス</dt>
+		<?php print(htmlspecialchars($_SESSION['join']['email'],ENT_QUOTES));?>
 		<dd>
-        </dd>
+    </dd>
 		<dt>パスワード</dt>
 		<dd>
 		【表示されません】
