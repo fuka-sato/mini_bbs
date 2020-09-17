@@ -1,5 +1,4 @@
 <?php 
-	ini_set('display_errors', 1);
 	session_start();
 	require('../dbconnect.php');
 
@@ -8,7 +7,6 @@
 		exit();
 	}
 	if(!empty($_POST)) {
-		$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);  
 		$statement = $db->prepare('INSERT INTO members SET name=?, email=?, picture=?,password=?,created=NOW()');
 		$statement->execute(array(
 			$_SESSION['join']['name'],
