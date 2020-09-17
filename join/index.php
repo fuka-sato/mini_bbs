@@ -20,7 +20,7 @@ if(!empty($_POST)) {
 	$fileName = $_FILES['image']['name'];
 	if (!empty($fileName)) {
 		$ext = substr($fileName,-3);
-		if ($ext != 'jpg' && $ext != 'gif'&& $ext != 'png') {
+		if ($ext != 'jpg' && $ext != 'gif'&&  $ext != 'png') {
 			$error['image'] = 'type';
 		}
 	}
@@ -85,8 +85,11 @@ if ($_REQUEST['action'] == 'rewrite' && isset($_SESSION['join'])) {
 		<dt>写真など</dt>
 		<dd>
         <input type="file" name="image" size="35" value="test"  />
-				<?php if($error['image']==='type'):?>
-				<p class="error">写真などは「.jpeg」または「.png」「.gif」の画像を指定してください</p>
+				<?php if($error['image'] === 'type'):?>
+					<p class="error">写真などは「.jpeg」または「.png」「.gif」の画像を指定してください</p>
+				<?php endif;?>
+				<?php if(!empty($error)):?>
+				<p class="error">恐れ入りますが、もう一度画像をしてしてください</p>
 				<?php endif;?>
         </dd>
 	</dl>
