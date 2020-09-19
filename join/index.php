@@ -86,10 +86,10 @@ if ($_REQUEST['action'] == 'rewrite' && isset($_SESSION['join'])) {
 		<dd>
         <input type="file" name="image" size="35" value="test"  />
 				<?php if($error['image'] === 'type'):?>
-					<p class="error">写真などは「.jpeg」または「.png」「.gif」の画像を指定してください</p>
+					<p class="error">写真などは「.jpg」または「.png」「.gif」の画像を指定してください</p>
 				<?php endif;?>
 				<?php if(!empty($error)):?>
-				<p class="error">恐れ入りますが、もう一度画像をしてしてください</p>
+				<p class="error">恐れ入りますが、もう一度画像を指定してください</p>
 				<?php endif;?>
         </dd>
 	</dl>
