@@ -15,7 +15,7 @@
     <h1>ひとこと掲示板</h1>
   </div>
   <div id="content">
-  	<div style="text-align: right"><a href="logout.php">ログアウト</a></div>
+    <div style="text-align: right"><a href="logout.php">ログアウト</a></div>
     <form action="" method="post">
       <dl>
         <dt>○○さん、メッセージをどうぞ</dt>
