@@ -84,6 +84,9 @@ if ($_REQUEST['action'] == 'rewrite' && isset($_SESSION['join'])) {
 				<?php if($error['email']==='blank'):?>
 				<p class="error">メールアドレスを入力してください</p>
 				<?php endif;?>
+				<?php if($error['email']==='duplication'):?>
+				<p class="error">指定されたメールアドレスは既に登録されています</p>
+				<?php endif;?>
 		<dt>パスワード<span class="required">必須</span></dt>
 		<dd>
         <input type="password" name="password" size="10" maxlength="20" value="<?php print(htmlspecialchars($_POST['password'],ENT_QUOTES));?>" />
