@@ -1,3 +1,17 @@
+<?php 
+require('../dbconnect.php');
+
+if (!empty($_POST)) {
+  if ($_POST['email'] !== '' && $_POST['password'] !== '') {
+    $login = $db->prepare('SELECT * FROM members WHERE email=? AND password=?');
+    $login->exeute(array(
+      $_POST['email'],
+      sha1($_POST['password'])
+    ));
+  }
+}
+?>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
