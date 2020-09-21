@@ -1,5 +1,6 @@
 <?php 
 	session_start();
+	require('../dbconnect.php');
 
 if(!empty($_POST)) {
 	if($_POST['name']==='') {
@@ -24,6 +25,17 @@ if(!empty($_POST)) {
 			$error['image'] = 'type';
 		}
 	}
+
+	// アカウントの重複をチェック
+	if(empty($error)) {
+		$member = $db->prepare('SELECT COUNT(*) AS cnt FROM members WHERE email=?');
+		$member->execute(array($_POST['email']));
+		$record = $member->fetch();
+			if ($record['cnt'] > 0) {
+				$error['email'] = 'duplication';
+			}
+	}
+
 
 	if(empty($error)) {
 		$image = date('YmdHis') . $_FILES['image']['name'];
