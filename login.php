@@ -1,6 +1,6 @@
 <?php 
 session_start();
-require('../dbconnect.php');
+require('dbconnect.php');
 
 if (!empty($_POST)) {
   if ($_POST['email'] !== '' && $_POST['password'] !== '') {
