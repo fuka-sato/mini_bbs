@@ -1,7 +1,6 @@
 <?php 
 session_start();
 require('dbconnect.php');
-var_dump($_POST);
 
 if (!empty($_POST)) {
   if ($_POST['email'] !== '' && $_POST['password'] !== '') {
@@ -10,11 +9,10 @@ if (!empty($_POST)) {
       $_POST['email'],
       sha1($_POST['password'])
     ));
-
-    $login->debugDumpParams(); // ここ
-    var_dump($login->errorInfo()); // ここ
-    exit();
+    $login->debugDumpParams();
     $member = $login->fetch();
+    var_dump($member); // ここ
+    exit(); // ここ
 
     if ($member) {
       $_SESSION['id'] = $member['id'];
