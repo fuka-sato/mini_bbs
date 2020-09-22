@@ -9,10 +9,7 @@ if (!empty($_POST)) {
       $_POST['email'],
       sha1($_POST['password'])
     ));
-    $login->debugDumpParams();
     $member = $login->fetch();
-    var_dump($member); // ここ
-    exit(); // ここ
 
     if ($member) {
       $_SESSION['id'] = $member['id'];
