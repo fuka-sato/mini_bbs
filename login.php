@@ -1,6 +1,7 @@
 <?php 
 session_start();
 require('dbconnect.php');
+var_dump($_POST);
 
 if (!empty($_POST)) {
   if ($_POST['email'] !== '' && $_POST['password'] !== '') {
@@ -9,6 +10,10 @@ if (!empty($_POST)) {
       $_POST['email'],
       sha1($_POST['password'])
     ));
+
+    $login->debugDumpParams(); // ここ
+    var_dump($login->errorInfo()); // ここ
+    exit();
     $member = $login->fetch();
 
     if ($member) {
@@ -53,6 +58,7 @@ if (!empty($_POST)) {
           <?php if ($error['login'] === 'blank'): ?>
             <p class="error">メールアドレスとパスワードをご記入ください</p>
           <?php endif;?>
+
           <?php if ($error['login'] === 'blank'): ?>
             <p class="error">ログインに失敗しました。正しくご記入ください</p>
           <?php endif;?>
