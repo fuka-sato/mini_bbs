@@ -5,7 +5,7 @@ require('dbconnect.php');
 if (!empty($_POST)) {
   if ($_POST['email'] !== '' && $_POST['password'] !== '') {
     $login = $db->prepare('SELECT * FROM members WHERE email=? AND password=?');
-    $login->exeute(array(
+    $login->execute(array(
       $_POST['email'],
       sha1($_POST['password'])
     ));
@@ -13,7 +13,8 @@ if (!empty($_POST)) {
 
     if ($member) {
       $_SESSION['id'] = $member['id'];
-      $_SESSION['time'] = $member['time'];
+      $_SESSION['time'] = time();
+
       header('Location: index.php');
       exit();
     } else {
