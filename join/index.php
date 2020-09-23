@@ -36,7 +36,7 @@ if(!empty($_POST)) {
 			}
 	}
 
-
+	// 画像にアップロードした日付の名称を付与
 	if(empty($error)) {
 		$image = date('YmdHis') . $_FILES['image']['name'];
 		move_uploaded_file($_FILES['image']['tmp_name'],'../member_picture/'. $image);
