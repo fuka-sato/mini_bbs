@@ -2,6 +2,7 @@
 	session_start();
 	require('../dbconnect.php');
 
+	// アカウント内容のエラーチェック
 if(!empty($_POST)) {
 	if($_POST['name']==='') {
 		$error['name'] = 'blank';
