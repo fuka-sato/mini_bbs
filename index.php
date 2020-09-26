@@ -20,6 +20,9 @@ if (!empty($_POST)) {
       $member['id'],
       $_POST['message']
     ));
+
+    header('Location: index.php');
+    exit();
   }
 }
 ?>
