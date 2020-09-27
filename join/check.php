@@ -2,10 +2,13 @@
 	session_start();
 	require('../dbconnect.php');
 
+	// 会員登録情報に値が入っていればindexに飛ばす
 	if(!isset($_SESSION['join'])) {
 		header('Location: index.php');
 		exit();
 	}
+
+	// 会員情報の確認
 	if(!empty($_POST)) {
 		$statement = $db->prepare('INSERT INTO members SET name=?, email=?,password=?,picture=?,created=NOW()');
 		$statement->execute(array(
