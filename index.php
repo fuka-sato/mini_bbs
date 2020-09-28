@@ -60,7 +60,7 @@ if(isset($_REQUEST['res'])){
         <dt><?php print(htmlspecialchars($member['name'],ENT_QUOTES)) ;?>さん、メッセージをどうぞ</dt>
         <dd>
           <textarea name="message" cols="50" rows="5"><?php print(htmlspecialchars($message,ENT_QUOTES)); ?></textarea>
-          <input type="hidden" name="reply_post_id" value="" />
+          <input type="hidden" name="reply_post_id" value="<?php print(htmlspecialchars($_REQUEST['res'],ENT_QUOTES)); ?>" />
         </dd>
       </dl>
       <div>
