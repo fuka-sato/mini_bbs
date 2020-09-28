@@ -27,6 +27,14 @@ if (!empty($_POST)) {
 }
 
 $posts = $db->query('SELECT m.name,m.picture,p.* FROM members m ,posts p WHERE m.id=p.member_id ORDER BY p.created DESC');
+
+if(isset($_REQUEST['res'])){
+  $response = $db->prepare('SELECT m.name,m.picture,p. * FROM members m, posts p WHERE m.id= p.member_id AND p.id=?');
+  $response ->execute(array($_REQUEST['res']));
+
+  $table = $response->fetch();
+  $message = '@' . $table['name'] . ' ' . $table['message'];
+}
 ?>
 
 <!DOCTYPE html>
@@ -51,7 +59,7 @@ $posts = $db->query('SELECT m.name,m.picture,p.* FROM members m ,posts p WHERE m
       <dl>
         <dt><?php print(htmlspecialchars($member['name'],ENT_QUOTES)) ;?>さん、メッセージをどうぞ</dt>
         <dd>
-          <textarea name="message" cols="50" rows="5"></textarea>
+          <textarea name="message" cols="50" rows="5"><?php print(htmlspecialchars($message,ENT_QUOTES)); ?></textarea>
           <input type="hidden" name="reply_post_id" value="" />
         </dd>
       </dl>
